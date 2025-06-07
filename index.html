@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pancasila - Landasan Bangsa</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  /* Root colors for Indonesian flag */
+  :root {
+    --red: #d32626;
+    --white: #ffffff;
+    --dark-red: #a22220;
+    --gray-light: #f8f8f8;
+    --shadow-red: rgba(211, 38, 38, 0.4);
+    --modal-bg: rgba(211, 38, 38, 0.85);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--dark-red);
+    overflow-x: hidden;
+  }
+
+  header {
+    background: var(--red);
+    color: var(--white);
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 3px 10px var(--shadow-red);
+  }
+
+  header h1 {
+    font-size: 2.8rem;
+    margin: 0 0 8px;
+    letter-spacing: 2px;
+  }
+
+  header p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* Garuda SVG styling */
+  .garuda-container {
+    width: 140px;
+    height: auto;
+    margin: 0 auto 10px;
+    cursor: pointer;
+    outline-offset: 3px;
+  }
+  .garuda-container:hover svg path {
+    fill: #a22220;
+    transition: fill 0.5s ease;
+  }
+  .garuda-container svg path {
+    transition: fill 0.5s ease;
+  }
+  /* Garuda pulse animation */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  .garuda-pulse {
+    animation: pulse 0.6s ease-in-out 2;
+  }
+
+  main {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Sections styling */
+  section {
+    margin-bottom: 40px;
+  }
+
+  h2.section-title {
+    color: var(--red);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    border-bottom: 3px solid var(--red);
+    display: inline-block;
+  }
+
+  /* Did you know section */
+  .did-you-know {
+    background: var(--gray-light);
+    border-left: 6px solid var(--red);
+    padding: 15px 20px;
+    font-style: italic;
+    margin: 0 auto 40px;
+    max-width: 700px;
+    color: #444;
+    font-weight: 600;
+    user-select: none;
+  }
+
+  .did-you-know-btn {
+    display: block;
+    margin: 10px auto 0;
+    background: var(--red);
+    color: var(--white);
+    font-weight: 700;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(211,38,38,0.6);
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  .did-you-know-btn:hover, .did-you-know-btn:focus {
+    background: var(--dark-red);
+    outline: none;
+  }
+
+  /* Lists for history */
+  .history-list {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: 20px;
+    color: #333;
+  }
+  .history-list li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+  }
+
+  .principle-card {
+    background: var(--gray-light);
+    border-radius: 15px;
+    padding: 30px 25px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    outline-offset: 2px;
+    user-select: none;
+  }
+
+  .principle-card:hover,
+  .principle-card:focus {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 35px rgba(211, 38, 38, 0.4);
+    outline: 2px solid var(--red);
+  }
+
+  .principle-icon {
+    font-size: 50px;
+    margin-bottom: 18px;
+    color: var(--red);
+  }
+
+  .principle-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--dark-red);
+  }
+
+  .principle-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333333;
+  }
+
+  /* Quiz Button with subtle breathing effect */
+  @keyframes breathe {
+    0%, 100% {
+      box-shadow: 0 6px 15px rgba(211, 38, 38, 0.5);
+    }
+    50% {
+      box-shadow: 0 10px 30px rgba(211, 38, 38, 0.8);
+    }
+  }
+  .quiz-button {
+    display: block;
+    max-width: 240px;
+    margin: 40px auto 10px;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--dark-red);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    animation: breathe 4s ease-in-out infinite;
+    user-select: none;
+  }
+
+  .quiz-button:hover, .quiz-button:focus {
+    background: var(--red);
+    transform: translateY(-5px);
+    outline: none;
+  }
+
+  /* Modals common styles with fade anim */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--modal-bg);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal-content {
+    background: var(--white);
+    border-radius: 15px;
+    max-width: 700px;
+    width: 100%;
+    padding: 30px 30px 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    text-align: center;
+    position: relative;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+
+  /* Quiz Modal styles */
+  .quiz-modal {
+    text-align: center;
+    position: relative;
+  }
+  .quiz-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--red);
+    border: none;
+    color: var(--white);
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 15px rgba(211, 38, 38, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .quiz-close-btn:hover, .quiz-close-btn:focus {
+    background: var(--dark-red);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: var(--dark-red);
+  }
+
+  .quiz-question {
+    margin: 25px 0 20px;
+    font-size: 1.2rem;
+    color: #444;
+    min-height: 70px;
+  }
+
+  .quiz-progress {
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 12px;
+    user-select: none;
+  }
+
+  .quiz-options {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+    text-align: left;
+  }
+
+  .quiz-options li {
+    margin-bottom: 16px;
+  }
+
+  .quiz-options button {
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--gray-light);
+    border: 2px solid var(--red);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    color: var(--dark-red);
+    position: relative;
+    user-select: none;
+  }
+
+  .quiz-options button:hover, .quiz-options button:focus {
+    background: var(--red);
+    color: var(--white);
+    border-color: var(--dark-red);
+    outline: none;
+  }
+  /* Feedback icons animation */
+  .quiz-options button.correct::after,
+  .quiz-options button.wrong::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: fadein 0.4s forwards;
+  }
+  .quiz-options button.correct::after {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='green' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20.285 6.708l-11.39 11.731-5.612-5.6 1.638-1.638 3.974 3.974 9.752-9.875z'/></svg>");
+  }
+  .quiz-options button.wrong::after {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='red' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M19.778 5.636l-1.414-1.414L12 10.586 5.636 4.222 4.222 5.636 10.586 12l-6.364 6.364 1.414 1.414L12 13.414l6.364 6.364 1.414-1.414L13.414 12z'/></svg>");
+  }
+
+  .quiz-feedback {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .quiz-score {
+    font-size: 1.4rem;
+    color: var(--red);
+    margin-bottom: 25px;
+  }
+
+  /* Close button common style */
+  .modal-close {
+    background: var(--red);
+    border: none;
+    color: var(--white);
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 15px rgba(211, 38, 38, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+    user-select: none;
+  }
+
+  .modal-close:hover, .modal-close:focus {
+    background: var(--dark-red);
+    transform: translateY(-3px);
+    outline: none;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    .intro {
+      font-size: 1rem;
+    }
+    .principle-card {
+      padding: 25px 18px;
+    }
+    .modal-content {
+      padding: 20px 20px 30px;
+      max-height: 70vh;
+    }
+    .quiz-question {
+      font-size: 1.1rem;
+      min-height: 60px;
+    }
+    iframe {
+      height: 200px !important;
+    }
+  }
+
+  /* Floating subtle animation for Garuda container */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .garuda-container {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Confetti canvas overlay */
+  #confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1500;
+  }
+
+  /* Mute button for sound */
+  .mute-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--red);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 4px 10px rgba(211, 38, 38, 0.7);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 48px;
+    text-align: center;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    z-index: 1600;
+  }
+  .mute-toggle:hover, .mute-toggle:focus {
+    background: var(--dark-red);
+    outline: none;
+  }
+
+  /* Simple style for mini game */
+  #memoryGame {
+    margin-top: 20px;
+    text-align: center;
+  }
+  #gameBoard {
+    margin: 0 auto;
+    width: 320px;
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    grid-gap: 15px;
+  }
+  .card {
+    width: 70px;
+    height: 70px;
+    background: var(--red);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--white);
+    user-select: none;
+    position: relative;
+  }
+  .card.matched {
+    background: var(--dark-red);
+    cursor: default;
+  }
+  .card.flipped {
+    background: var(--white);
+    color: var(--dark-red);
+    cursor: default;
+  }
+  #gameStatus {
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    user-select: none;
+  }
+
+  /* Video section */
+  .video-wrapper  {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  iframe {
+    width: 100%;
+    height: 360px;
+    border-radius: 15px;
+    border: none;
+  }
+</style>
+</head>
+<body>
+  <header>
+  <div class="garuda-container" aria-label="Lambang Burung Garuda Pancasila" role="img" tabindex="0" title="Klik untuk info tentang Garuda Pancasila">
+    <!-- Garuda Pancasila simplified SVG -->
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" role="img" aria-hidden="true">
+      <path d="M32 3 L24 15 L10 20 L18 28 L12 38 L24 40 L22 50 L32 44 L42 50 L40 40 L52 38 L46 28 L54 20 L40 15 L32 3 Z" fill="#d32626"/>
+      <path d="M24 15 L32 3 L40 15" stroke="#ffffff" stroke-width="2"/>
+      <path d="M12 38 L24 40 L32 44 L40 40 L52 38" stroke="#ffffff" stroke-width="2"/>
+    </svg>
+  </div>
+  <h1>PANCASILA</h1>
+  <p>Landasan dan Jiwa Bangsa Indonesia</p>
+</header>
+<main>
+  <section class="intro" aria-label="Pendahuluan Pancasila">
+    <p>Pancasila adalah dasar dan pandangan hidup bangsa Indonesia yang terdiri dari lima sila yang menjadi landasan negara, serta pedoman moral bagi seluruh rakyat Indonesia.</p>
+  </section>
+
+  <section id="history" aria-label="Sejarah Pancasila">
+    <h2 class="section-title">Sejarah Pancasila</h2>
+    <ul class="history-list">
+      <li>Pancasila pertama kali dikemukakan oleh Soekarno dalam pidatonya pada tanggal 1 Juni 1945 di hadapan Badan Penyelidik Usaha Persiapan Kemerdekaan Indonesia (BPUPKI).</li>
+      <li>Pancasila disusun sebagai dasar negara sekaligus pandangan hidup bangsa Indonesia untuk menyatukan seluruh keberagaman dalam satu negara kesatuan.</li>
+      <li>Pancasila secara resmi menjadi dasar negara Republik Indonesia setelah disahkan pada tanggal 18 Agustus 1945 dalam Sidang Dokuritsu Zyunbi Cosakai (Panitia Persiapan Kemerdekaan Indonesia).</li>
+      <li>Lima sila mencerminkan nilai-nilai agama, kemanusiaan, persatuan, demokrasi, dan keadilan sosial yang menjadi pijakan moral dan politik bangsa Indonesia.</li>
+    </ul>
+  </section>
+
+  <section class="did-you-know" id="didYouKnow" aria-live="polite" aria-atomic="true">Tahukah kamu? Pancasila pertama kali dikemukakan oleh Soekarno pada tanggal 1 Juni 1945.</section>
+  <button class="did-you-know-btn" id="changeFactBtn" aria-label="Ganti informasi rahasia">Info lainnya</button>
+
+ 
+    <article class="principle-card" tabindex="0" aria-labelledby="sila1-title" data-sila="1">
+      <div class="principle-icon" aria-hidden="true">🕊️</div>
+      <h2 id="sila1-title" class="principle-title">Ketuhanan Yang Maha Esa</h2>
+    </article>
+    <article class="principle-card" tabindex="0" aria-labelledby="sila2-title" data-sila="2">
+      <div class="principle-icon" aria-hidden="true">🤝</div>
+      <h2 id="sila2-title" class="principle-title">Kemanusiaan yang Adil dan Beradab</h2>
+    </article>
+    <article class="principle-card" tabindex="0" aria-labelledby="sila3-title" data-sila="3">
+      <div class="principle-icon" aria-hidden="true">🌍</div>
+      <h2 id="sila3-title" class="principle-title">Persatuan Indonesia</h2>
+    </article>
+    <article class="principle-card" tabindex="0" aria-labelledby="sila4-title" data-sila="4">
+      <div class="principle-icon" aria-hidden="true">⚖️</div>
+      <h2 id="sila4-title" class="principle-title">Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan</h2>
+      
+    </article>
+    <article class="principle-card" tabindex="0" aria-labelledby="sila5-title" data-sila="5">
+      <div class="principle-icon" aria-hidden="true">🌾</div>
+      <h2 id="sila5-title" class="principle-title">Keadilan Sosial bagi Seluruh Rakyat Indonesia</h2>
+    </article>
+  </section>
+
+  <section id="videoSection" aria-label="Video Pembelajaran Pancasila">
+    <h2 class="section-title">Video Pembelajaran Pancasila</h2>
+    <div class="video-wrapper">
+  <iframe 
+    src="https://www.youtube.com/embed/vKyHCa7UByI?si" 
+    title="YouTube video player" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+ <div class="video-wrapper">
+  <iframe 
+    src="https://www.youtube.com/embed/6hlPkB_4hkk?si" 
+    title="YouTube video player" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+<div class="video-wrapper">
+  <iframe 
+    src="https://www.youtube.com/embed/e_YkEzZAXQo?si" 
+    title="YouTube video player" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+<div class="video-wrapper">
+  <iframe 
+    src="https://www.youtube.com/embed/LOg45DhFHZI?si" 
+    title="YouTube video player" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+<div class="video-wrapper">
+  <iframe 
+    src="https://www.youtube.com/embed/7sMUavUymfs?si" 
+    title="YouTube video player" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+  </section>
+
+  <section id="gamesSection" aria-label="Permainan Interaktif Pancasila">
+    <h2 class="section-title">Permainan Memory Matching: Cocokkan Simbol dan Sila</h2>
+    <div id="memoryGame" aria-live="polite">
+      <div id="gameBoard" tabindex="0" aria-label="Area permainan memory matching"></div>
+      <div id="gameStatus" aria-live="assertive"></div>
+    </div>
+  </section>
+
+  <button class="quiz-button" id="startQuizBtn" aria-haspopup="dialog" aria-pressed="false" aria-label="Mulai quiz Pancasila">Tes Pengetahuanmu tentang Pancasila!</button>
+
+  <!-- Quiz Modal -->
+  <div class="modal-overlay" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizTitle" tabindex="-1">
+    <div class="quiz-modal modal-content" role="document">
+      <button class="quiz-close-btn" id="closeQuizBtn" aria-label="Tutup quiz">Tutup Quiz</button>
+      <h2 id="quizTitle">Quiz Pancasila</h2>
+      <div class="quiz-content">
+        <div class="quiz-progress" id="quizProgress">Pertanyaan 1 dari 5</div>
+        <div class="quiz-question" id="quizQuestion">Pertanyaan akan muncul di sini</div>
+        <ul class="quiz-options" id="quizOptions"></ul>
+        <div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div>
+        <button class="modal-close" id="nextBtn" aria-label="Jawaban berikutnya">Mulai Quiz</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sila Detail Modal -->
+  <div class="modal-overlay" id="silaModal" role="dialog" aria-modal="true" aria-labelledby="silaModalTitle" tabindex="-1">
+    <div class="modal-content" role="document">
+      <h2 id="silaModalTitle">Detail Sila</h2>
+      <div id="silaModalContent" style="text-align:left; margin-top:15px; line-height:1.5; color:#333;"></div>
+      <button class="modal-close" id="closeSilaModalBtn" aria-label="Tutup detail sila">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Mute toggle for sound -->
+  <button class="mute-toggle" id="muteToggle" aria-label="Toggle suara quiz">🔈</button>
+
+</main>
+<footer>
+  &copy; 2024 Pancasila - Semangat Bangsa Indonesia
+</footer>
+<script>
+  (function(){
+    // Quiz Data
+    const quizData = [
+      {
+        question: "Apa sila pertama dalam Pancasila?",
+        options: [
+          "Ketuhanan Yang Maha Esa",
+          "Kemanusiaan yang Adil dan Beradab",
+          "Persatuan Indonesia",
+          "Keadilan Sosial bagi Seluruh Rakyat Indonesia"
+        ],
+        answerIndex: 0
+      },
+      {
+        question: "Sila ke berapa adalah 'Persatuan Indonesia'?",
+        options: [
+          "Sila kedua",
+          "Sila ketiga",
+          "Sila keempat",
+          "Sila kelima"
+        ],
+        answerIndex: 1
+      },
+      {
+        question: "Apa makna sila keempat Pancasila?",
+        options: [
+          "Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan",
+          "Menjaga persatuan dan kesatuan bangsa",
+          "Mengakui adanya Tuhan",
+          "Menjamin keadilan sosial"
+        ],
+        answerIndex: 0
+      },
+      {
+        question: "Sila kelima Pancasila berbunyi ...",
+        options: [
+          "Keadilan Sosial bagi Seluruh Rakyat Indonesia",
+          "Ketuhanan Yang Maha Esa",
+          "Persatuan Indonesia",
+          "Kemanusiaan yang Adil dan Beradab"
+        ],
+        answerIndex: 0
+      },
+      {
+        question: "Apa tujuan dari Pancasila?",
+        options: [
+          "Menjadi dasar dan pandangan hidup bangsa Indonesia",
+          "Menjadi lagu nasional",
+          "Sarana hiburan",
+          "Simbol olahraga"
+        ],
+        answerIndex: 0
+      }
+    ];
+
+    // Detailed sila explanations and daily life examples
+    const silaDetails = {
+      1: `<strong>Ketuhanan Yang Maha Esa</strong><br>
+          Sila pertama menegaskan bahwa bangsa Indonesia mengakui adanya Tuhan sebagai landasan moral dan spiritual
+          dalam kehidupan berbangsa dan bernegara. Sila ini mengajak setiap warga negara untuk beriman dan bertakwa sesuai agama dan kepercayaannya masing-masing, serta menghormati kebebasan beragama.<br><br>
+          <strong>Contoh penerapan dalam kehidupan sehari-hari:</strong><br>
+          Menghormati dan toleransi terhadap perbedaan agama, serta turut serta dalam kegiatan keagamaan masing-masing dengan rasa saling menghargai.`,
+      2: `<strong>Kemanusiaan yang Adil dan Beradab</strong><br>
+          Sila kedua menekankan pentingnya memperlakukan sesama manusia dengan keadilan dan perikemanusiaan yang beradab.
+          Ini berarti menghargai hak asasi manusia, menentang diskriminasi, dan menjaga harmonisasi dalam masyarakat.<br><br>
+          <strong>Contoh penerapan dalam kehidupan sehari-hari:</strong><br>
+          Bersikap adil kepada teman, membantu orang yang membutuhkan tanpa membeda-bedakan, dan menghormati hak serta martabat orang lain.`,
+      3: `<strong>Persatuan Indonesia</strong><br>
+          Sila ketiga mengajak seluruh warga bangsa untuk menjaga persatuan dan kesatuan Indonesia.
+          Meskipun negara ini terdiri atas beragam suku, budaya, dan agama, persatuan menjadi kunci kekuatan dan keberlangsungan bangsa.<br><br>
+          <strong>Contoh penerapan dalam kehidupan sehari-hari:</strong><br>
+          Menghargai keberagaman budaya dan suku bangsa, serta berpartisipasi dalam kegiatan yang mempererat persatuan seperti gotong royong.`,
+      4: `<strong>Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan</strong><br>
+          Sila keempat mengandung makna demokrasi Pancasila, di mana keputusan diambil melalui musyawarah untuk mencapai mufakat.
+          Sistem pemerintahan ini memberi ruang bagi partisipasi rakyat secara cerdas dan bijaksana.<br><br>
+          <strong>Contoh penerapan dalam kehidupan sehari-hari:</strong><br>
+          Mengutamakan musyawarah saat membuat keputusan kelompok dan menghargai pendapat orang lain dalam diskusi.`,
+      5: `<strong>Keadilan Sosial bagi Seluruh Rakyat Indonesia</strong><br>
+          Sila kelima menegaskan tujuan untuk mewujudkan keadilan sosial dengan pemerataan kesejahteraan bagi seluruh rakyat tanpa diskriminasi.
+          Ini termasuk akses pendidikan, kesehatan, dan kesempatan yang sama bagi seluruh warga negara.<br><br>
+          <strong>Contoh penerapan dalam kehidupan sehari-hari:</strong><br>
+          Membantu sesama yang kurang mampu dan memperlakukan semua orang dengan setara tanpa membeda-bedakan status atau latar belakang.`
+    };
+
+    // Did you know facts
+    const didYouKnowFacts = [
+      "Pancasila pertama kali dikemukakan oleh Soekarno pada tanggal 1 Juni 1945.",
+      "Burung Garuda sebagai lambang negara diambil berdasarkan mitologi Hindu dan melambangkan kekuatan.",
+      "Pancasila menjadi dasar negara Indonesia yang diresmikan pada 18 Agustus 1945.",
+      "Sila kedua Pancasila menekankan pentingnya penghormatan terhadap hak asasi manusia.",
+      "Tanggal 1 Juni setiap tahun diperingati sebagai Hari Lahir Pancasila di Indonesia."
+    ];
+
+    // Quiz Elements
+    const startBtn = document.getElementById('startQuizBtn');
+    const quizModal = document.getElementById('quizModal');
+    const questionEl = document.getElementById('quizQuestion');
+    const optionsEl = document.getElementById('quizOptions');
+    const feedbackEl = document.getElementById('quizFeedback');
+    const nextBtn = document.getElementById('nextBtn');
+    const closeQuizBtn = document.getElementById('closeQuizBtn');
+    const quizProgress = document.getElementById('quizProgress');
+
+    // Mute toggle elements
+    const muteToggle = document.getElementById('muteToggle');
+    let soundEnabled = true;
+
+    let currentIndex = 0;
+    let score = 0;
+    let quizCompleted = false;
+
+    // Sila modal and elements
+    const silaModal = document.getElementById('silaModal');
+    const silaModalContent = document.getElementById('silaModalContent');
+    const silaModalTitle = document.getElementById('silaModalTitle');
+    const closeSilaModalBtn = document.getElementById('closeSilaModalBtn');
+    
+    // Did you know elements
+    const didYouKnowEl = document.getElementById('didYouKnow');
+    const changeFactBtn = document.getElementById('changeFactBtn');
+
+    // Audio context and sound function for click feedback
+    let audioCtx;
+    function playClickSound(){
+      if(!soundEnabled) return;
+      try {
+        if(!audioCtx){
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.type = 'square';
+        oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.1);
+      } catch(e){
+        // silently fail on audio errors
+      }
+    }
+
+    // Function to open quiz modal
+    function openQuizModal() {
+      quizModal.classList.add('active');
+      quizModal.focus();
+      currentIndex = 0;
+      score = 0;
+      quizCompleted = false;
+      nextBtn.textContent = 'Mulai Quiz';
+      feedbackEl.textContent = '';
+      optionsEl.innerHTML = '';
+      questionEl.textContent = 'Tekan "Mulai Quiz" untuk memulai.';
+      updateQuizProgress();
+      removeConfetti();
+      startBtn.setAttribute('aria-pressed', 'true');
+    }
+
+    // Function to close quiz modal
+    function closeQuizModal() {
+      quizModal.classList.remove('active');
+      startBtn.focus();
+      removeConfetti();
+      startBtn.setAttribute('aria-pressed', 'false');
+    }
+
+    // Show current quiz question
+    function showQuestion(index) {
+      const q = quizData[index];
+      questionEl.textContent = q.question;
+      feedbackEl.textContent = '';
+      optionsEl.innerHTML = '';
+      q.options.forEach((option, i) => {
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = option;
+        btn.setAttribute('data-index', i);
+        btn.addEventListener('click', () => {
+          selectOption(i);
+          playClickSound();
+        });
+        li.appendChild(btn);
+        optionsEl.appendChild(li);
+      });
+      updateQuizProgress();
+    }
+
+    // Update the quiz progress display
+    function updateQuizProgress() {
+      quizProgress.textContent = `Pertanyaan ${currentIndex + 1} dari ${quizData.length}`;
+    }
+
+    // Handle option selection
+    function selectOption(selectedIndex) {
+      if(quizCompleted) return; // prevent multiple answers after completed
+      const correctIndex = quizData[currentIndex].answerIndex;
+      if(selectedIndex === correctIndex) {
+        score++;
+        feedbackEl.textContent = 'Benar! 🎉';
+        feedbackEl.style.color = 'green';
+      } else {
+        feedbackEl.textContent = `Salah, jawaban yang benar: "${quizData[currentIndex].options[correctIndex]}"`;
+        feedbackEl.style.color = 'red';
+      }
+      highlightAnswers(correctIndex, selectedIndex);
+      disableOptions();
+      quizCompleted = true;
+      nextBtn.textContent = currentIndex + 1 < quizData.length ? 'Soal Berikutnya' : 'Lihat Skor';
+    }
+
+    // Highlight correct and selected answers with icon animation
+    function highlightAnswers(correctIndex, selectedIndex) {
+      const buttons = optionsEl.querySelectorAll('button');
+      buttons.forEach((btn, i) => {
+        btn.classList.remove('correct', 'wrong');
+        btn.style.borderColor = '';
+        btn.style.backgroundColor = '';
+        btn.disabled = true;
+        if(i === correctIndex) {
+          btn.style.backgroundColor = '#b2f2bb'; /* light green */
+          btn.style.borderColor = 'green';
+          btn.classList.add('correct');
+        } else if(i === selectedIndex) {
+          btn.style.backgroundColor = '#f8b3b1'; /* light red */
+          btn.style.borderColor = 'red';
+          btn.classList.add('wrong');
+        }
+      });
+    }
+
+    // Disable all option buttons
+    function disableOptions() {
+      const buttons = optionsEl.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+
+    // Move to next question or show score
+    function nextQuestion() {
+      if(!quizCompleted) return;
+      currentIndex++;
+      quizCompleted = false;
+      feedbackEl.textContent = '';
+      if(currentIndex < quizData.length) {
+        showQuestion(currentIndex);
+        nextBtn.textContent = 'Lewati Soal';
+      } else {
+        showScore();
+      }
+    }
+
+    // Show final score
+    function showScore() {
+      questionEl.textContent = `Quiz selesai! Skor kamu ${score} dari ${quizData.length}.`;
+      optionsEl.innerHTML = '';
+      feedbackEl.textContent = '';
+      nextBtn.textContent = 'Tutup Quiz';
+      quizCompleted = true;
+      updateQuizProgress();
+      if(score === quizData.length){
+        launchConfetti();
+      }
+    }
+
+    // Event listeners for quiz modal
+    startBtn.addEventListener('click', openQuizModal);
+    nextBtn.addEventListener('click', () => {
+      if(!quizCompleted) {
+        // Skip question if next is clicked without answer
+        feedbackEl.textContent = 'Soal dilewati.';
+        quizCompleted = true;
+        highlightAnswers(quizData[currentIndex].answerIndex, -1);
+        nextBtn.textContent = currentIndex + 1 < quizData.length ? 'Soal Berikutnya' : 'Lihat Skor';
+        playClickSound();
+        return;
+      }
+      if(currentIndex < quizData.length) {
+        if(quizCompleted && nextBtn.textContent === 'Tutup Quiz') {
+          closeQuizModal();
+        } else {
+          nextQuestion();
+        }
+      }
+      playClickSound();
+    });
+    closeQuizBtn.addEventListener('click', () => {
+      closeQuizModal();
+      playClickSound();
+    });
+
+    muteToggle.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      muteToggle.textContent = soundEnabled ? "🔈" : "🔇";
+      muteToggle.setAttribute('aria-label', soundEnabled ? 'Suara diaktifkan' : 'Suara dimatikan');
+      muteToggle.focus();
+    });
+
+    // Close quiz modal on Escape key and sila modal on Escape too
+    window.addEventListener('keydown', e => {
+      if(e.key === 'Escape') {
+        if(quizModal.classList.contains('active')) {
+          closeQuizModal();
+        }
+        if(silaModal.classList.contains('active')) {
+          closeSilaModal();
+        }
+      }
+    });
+
+    // Sila modal control functions
+    function openSilaModal(silaNumber) {
+      silaModalTitle.textContent = `Detail Sila ${silaNumber}`;
+      silaModalContent.innerHTML = silaDetails[silaNumber] || 'Informasi tidak tersedia.';
+      silaModal.classList.add('active');
+      silaModal.focus();
+      // Smooth scroll modal into view
+      silaModal.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    function closeSilaModal() {
+      silaModal.classList.remove('active');
+      // Return focus to last clicked card - handled in event listener below
+      if(lastFocusedCard){
+        lastFocusedCard.focus();
+      }
+    }
+
+    closeSilaModalBtn.addEventListener('click', () => {
+      closeSilaModal();
+      playClickSound();
+    });
+
+    // Add click and keyboard interaction to principle cards for sila details
+    const principleCards = document.querySelectorAll('.principle-card');
+    let lastFocusedCard = null;
+    principleCards.forEach(card => {
+      card.addEventListener('click', () => {
+        lastFocusedCard = card;
+        const silaNum = card.getAttribute('data-sila');
+        openSilaModal(silaNum);
+        playClickSound();
+      });
+      card.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          lastFocusedCard = card;
+          const silaNum = card.getAttribute('data-sila');
+          openSilaModal(silaNum);
+          playClickSound();
+        }
+      });
+    });
+
+    // Did you know feature
+    changeFactBtn.addEventListener('click', () => {
+      let currentFact = didYouKnowEl.textContent;
+      let newFact;
+      do {
+        newFact = didYouKnowFacts[Math.floor(Math.random() * didYouKnowFacts.length)];
+      } while(newFact === currentFact);
+      didYouKnowEl.textContent = newFact;
+      playClickSound();
+    });
+
+    // Garuda clickable info popup with pulse animation
+    const garudaContainer = document.querySelector('.garuda-container');
+    garudaContainer.addEventListener('click', () => {
+      garudaPulseAnimation();
+      alert('Burung Garuda adalah lambang negara Indonesia yang melambangkan kekuatan dan kebesaran bangsa.');
+      playClickSound();
+    });
+    garudaContainer.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        garudaPulseAnimation();
+        alert('Burung Garuda adalah lambang negara Indonesia yang melambangkan kekuatan dan kebesaran bangsa.');
+        playClickSound();
+      }
+    });
+    function garudaPulseAnimation(){
+      garudaContainer.classList.add('garuda-pulse');
+      setTimeout(() => {
+        garudaContainer.classList.remove('garuda-pulse');
+      }, 1200);
+    }
+
+    // Confetti animation from canvas for perfect score celebration
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const ctx = confettiCanvas.getContext('2d');
+    let confettiParticles = [];
+    let confettiRunning = false;
+    function resizeCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class ConfettiParticle {
+      constructor(){
+        this.x = Math.random() * confettiCanvas.width;
+        this.y = Math.random() * confettiCanvas.height - confettiCanvas.height;
+        this.size = 8 + Math.random()*8;
+        this.speedX = (Math.random()-0.5) * 4;
+        this.speedY = 2 + Math.random()*3;
+        this.color = `hsl(${Math.random()*360}, 70%, 60%)`;
+        this.rotation = Math.random()*360;
+        this.rotationSpeed = (Math.random()-0.5) * 10;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.rotation += this.rotationSpeed;
+        if(this.y > confettiCanvas.height) {
+          this.y = -this.size;
+          this.x = Math.random() * confettiCanvas.width;
+        }
+        if(this.x > confettiCanvas.width) this.x = 0;
+        if(this.x < 0) this.x = confettiCanvas.width;
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    function launchConfetti(){
+      if(confettiRunning) return;
+      confettiRunning = true;
+      confettiParticles = [];
+      for(let i=0; i<150; i++){
+        confettiParticles.push(new ConfettiParticle());
+      }
+      confettiLoop();
+      // auto stop after 8 seconds
+      setTimeout(removeConfetti, 8000);
+    }
+    function confettiLoop(){
+      if(!confettiRunning) return;
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      confettiParticles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(confettiLoop);
+    }
+    function removeConfetti(){
+      confettiRunning = false;
+      ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+    }
+
+    // Simple Memory Matching game
+    const gameBoard = document.getElementById('gameBoard');
+    const gameStatus = document.getElementById('gameStatus');
+
+    const symbols = ['🕊️', '🕊️', '🤝', '🤝', '🌍', '🌍', '⚖️', '⚖️', '🌾', '🌾','⭐','⭐','🔥','🔥','⚡','⚡']; // 8 pairs
+    let shuffledSymbols = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let busy = false;
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function createGameCards() {
+      gameBoard.innerHTML = '';
+      shuffledSymbols = symbols.slice();
+      shuffleArray(shuffledSymbols);
+      shuffledSymbols.forEach((symbol, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.setAttribute('tabindex', 0);
+        card.setAttribute('aria-label', 'Kartu belum terbuka');
+        card.setAttribute('data-symbol', symbol);
+        card.dataset.index = index;
+        card.addEventListener('click', () => flipCard(card));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            flipCard(card);
+          }
+        });
+        gameBoard.appendChild(card);
+      });
+      gameStatus.textContent = 'Temukan semua pasangan simbol!';
+      flippedCards = [];
+      matchedPairs = 0;
+      busy = false;
+    }
+
+    function flipCard(card) {
+      if (busy) return;
+      if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
+      card.classList.add('flipped');
+      card.textContent = card.getAttribute('data-symbol');
+      card.setAttribute('aria-label', `Kartu terbuka dengan simbol ${card.textContent}`);
+      flippedCards.push(card);
+      if (flippedCards.length === 2) {
+        busy = true;
+        setTimeout(checkMatch, 1000);
+      }
+    }
+
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
+      if (card1.getAttribute('data-symbol') === card2.getAttribute('data-symbol')) {
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        gameStatus.textContent = 'Pasangan cocok!';
+        matchedPairs++;
+        if (matchedPairs === symbols.length / 2) {
+          gameStatus.textContent = 'Selamat! Kamu menemukan semua pasangan simbol!';
+          launchConfetti();
+        }
+      } else {
+        card1.classList.remove('flipped');
+        card1.textContent = '';
+        card1.setAttribute('aria-label', 'Kartu belum terbuka');
+        card2.classList.remove('flipped');
+        card2.textContent = '';
+        card2.setAttribute('aria-label', 'Kartu belum terbuka');
+        gameStatus.textContent = 'Coba lagi!';
+      }
+      flippedCards = [];
+      busy = false;
+    }
+
+    createGameCards();
+
+    // Page unload message fade out
+    window.addEventListener('beforeunload', () => {
+      alert("Terima kasih telah mengunjungi situs Pancasila kami!");
+    });
+
+  })();
+</script>
+</body>
+</html>
+
